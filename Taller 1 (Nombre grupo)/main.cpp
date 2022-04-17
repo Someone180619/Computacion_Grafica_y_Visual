@@ -1,8 +1,7 @@
 #include <windows.h>
 #include <GL/glut.h>
-
+//otro comentario 
 using namespace std;
-
 void proyeccion()
 {
     glClearColor(1.0,1.0,1.0,0.0);
@@ -121,7 +120,7 @@ void Ampersand(){
     glVertex2f(9, 1.8); glVertex2f(8,1.8);
     glVertex2f(8, 1.8); glVertex2f(8,1.3);
 }
-//Comentario
+
 
 void dibujar(void)
 {
