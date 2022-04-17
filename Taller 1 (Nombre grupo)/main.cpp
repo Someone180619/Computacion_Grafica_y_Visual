@@ -121,7 +121,7 @@ void Ampersand(){
     glVertex2f(9, 1.8); glVertex2f(8,1.8);
     glVertex2f(8, 1.8); glVertex2f(8,1.3);
 }
-
+//Comentario
 
 void dibujar(void)
 {
