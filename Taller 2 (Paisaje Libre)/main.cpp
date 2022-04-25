@@ -5,7 +5,7 @@
 #include <math.h>
 #define PI=3.14159265358979323846;
 
-void update(int);
+
 void draw_circle(float x, float y, float radio);
 float move_cloud=0;
 float move_dust=0;
@@ -13,7 +13,8 @@ float move_dust=0;
 void DrawGrassField(){
     ///============== el cesped
     glBegin(GL_POLYGON);
-	glColor3f(0,0.40,0);     //degradado oscuro - parte bajja
+
+	glColor3f(0,0.40,0);     //degradado oscuro - parte inferior
     glVertex2i(0,0);
     glVertex2i(800, 0);
     glColor3f(0,0.70,0);  // degradado claro - parte superior
@@ -25,17 +26,17 @@ void DrawGrassField(){
     for(int i=0;i<4;i++){
         glBegin(GL_POLYGON);
         glColor3ub(102, 51, 0);  //tronco del arbol
-        glVertex2i(60+treeDistance,30);
-        glVertex2i(70+treeDistance,30);
+        glVertex2i(60+treeDistance,35);
+        glVertex2i(70+treeDistance,35);
         glVertex2i(65+treeDistance,150);
         glEnd();
         glColor3f(0.51, 0.62, 0.13);   //Hojas del arbol
-        draw_circle(50+treeDistance,100,20);     //primera copa del arbol
-        draw_circle(80+treeDistance,100,20);     //segunda copa del arbol
+        draw_circle(50+treeDistance,100,30);     //primera copa del arbol
+        draw_circle(80+treeDistance,100,30);     //segunda copa del arbol
         glColor3f(0.49, 0.71, 0);
-        draw_circle(58+treeDistance,130,18);     //1ra copa central del arbol
-        draw_circle(72+treeDistance,130,18);     //2da copa central del arbol
-        draw_circle(65+treeDistance,150,14);     //copa superior del arbol
+        draw_circle(58+treeDistance,130,28);     //1ra copa central del arbol
+        draw_circle(72+treeDistance,130,28);     //2da copa central del arbol
+        draw_circle(65+treeDistance,156,20);     //copa superior del arbol
         treeDistance=treeDistance+200;
     }
     ///================================ segunda linea de arboles
@@ -47,10 +48,11 @@ void DrawGrassField(){
         glVertex2i(70+treeDistance,100);
         glVertex2i(65+treeDistance,220);
         glEnd();
-        glColor3f(0.38, 0.75, 0.13);   //Hojas del arbol
+
+        glColor3f(0.38, 0.75, 0.13);            //Hojas del arbol
         draw_circle(50+treeDistance,170,20);     //primera copa del arbol
         draw_circle(80+treeDistance,170,20);     //segunda copa del arbol
-        glColor3f(0.49, 0.86, 0.24); //Color claro de la copa
+        glColor3f(0.49, 0.86, 0.24);
         draw_circle(58+treeDistance,200,18);     //1ra copa central del arbol
         draw_circle(72+treeDistance,200,18);     //2da copa central del arbol
         draw_circle(65+treeDistance,220,14);     //copa superior del arbol
@@ -76,6 +78,10 @@ void DrawCloud(){
     draw_circle(600+move_cloud,730,43);
     draw_circle(555+move_cloud,730,33);
     draw_circle(645+move_cloud,730,33);
+
+    draw_circle(500+move_cloud,530,33);
+    draw_circle(455+move_cloud,530,23);
+    draw_circle(545+move_cloud,530,23);
 }
 void DrawIndustry(){
      ///============================== edificio del lado derecho
@@ -143,7 +149,7 @@ void DrawIndustry(){
 
     int b3y1=250,b3y2=260;
     int b3x1=300,b3x2=315;
-    for(int j=1;j<37;j++){
+    for(int j=1;j<41;j++){
         glBegin(GL_POLYGON);
 //=============================== Primera filas de ventanas
         glColor3ub(204, 204, 255);
