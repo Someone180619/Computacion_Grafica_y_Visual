@@ -95,11 +95,11 @@ void createMenu(void){
 void display(void){
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_PROJECTION | GL_MODELVIEW);
+    glColor3f(n1,n2,n3);
     switch (valueShapes) // Proyecta la figura dependiendo del valor asignado en la función geometricMenu.
     {
         case 1:
             glBegin(GL_QUADS);
-            glColor3f(n1,n2,n3);
             glVertex2f(-0.6, 0.6); glVertex2f(-0.6, -0.6);
             glVertex2f(0.6, -0.6); glVertex2f(0.6, 0.6);
             glEnd();
@@ -107,7 +107,6 @@ void display(void){
 
         case 2:
             glBegin(GL_QUADS);
-            glColor3f(n1,n2,n3);
             glVertex2f(-0.8, 0.4); glVertex2f(-0.8, -0.4);
             glVertex2f(0.8, -0.4); glVertex2f(0.8, 0.4);
             glEnd();
@@ -115,7 +114,6 @@ void display(void){
 
         case 3:
             glBegin(GL_TRIANGLES);
-            glColor3f(n1,n2,n3);
             glVertex2f(-0.6,-0.6);
             glVertex2f(0.6,-0.6);
             glVertex2f(0.0,0.6);
@@ -124,14 +122,12 @@ void display(void){
 
         case 4:
             glPushMatrix();
-            glColor3f(n1,n2,n3);
             glutSolidSphere(0.6, 100, 100);
             glPopMatrix();
         break;
 
         case 5:
             glBegin(GL_POLYGON);
-            glColor3f(n1,n2,n3);
             glVertex2f(-0.7,0.0); glVertex2f(-0.3,0.6);
             glVertex2f(-0.3,0.6);glVertex2f(0.3,0.6);
             glVertex2f(0.3,0.6);glVertex2f(0.7,0.0);
@@ -142,14 +138,12 @@ void display(void){
 
         case 6:
             glPushMatrix();
-            glColor3f(n1,n2,n3);
             glutSolidTorus(0.2, 0.5, 10, 50);
             glPopMatrix();
         break;
 
         case 7:
             glBegin(GL_TRIANGLES);
-            glColor3f(n1,n2,n3);
             glVertex2f(0.0,-0.4);
             glVertex2f(0.7,0.0);
             glVertex2f(0.0,0.4);
@@ -162,7 +156,6 @@ void display(void){
 
         case 8:
             glBegin(GL_QUADS);
-            glColor3f(n1,n2,n3);
             glVertex2f(-0.6, 0.2); glVertex2f(-0.6, -0.2);
             glVertex2f(0.6, -0.2); glVertex2f(0.6, 0.2);
             glEnd();
