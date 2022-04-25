@@ -13,9 +13,10 @@ float move_dust=0;
 void DrawGrassField(){
     ///============== el cesped
     glBegin(GL_POLYGON);
-	glColor3f(0,0.60,0);     //green color
+	glColor3f(0,0.40,0);     //degradado oscuro - parte bajja
     glVertex2i(0,0);
     glVertex2i(800, 0);
+    glColor3f(0,0.70,0);  // degradado claro - parte superior
     glVertex2i(800,180);
     glVertex2i(0, 180);
     glEnd();
@@ -28,9 +29,10 @@ void DrawGrassField(){
         glVertex2i(70+treeDistance,30);
         glVertex2i(65+treeDistance,150);
         glEnd();
-        glColor3f(0, 153, 0);   //Hojas del arbol
+        glColor3f(0.51, 0.62, 0.13);   //Hojas del arbol
         draw_circle(50+treeDistance,100,20);     //primera copa del arbol
         draw_circle(80+treeDistance,100,20);     //segunda copa del arbol
+        glColor3f(0.49, 0.71, 0);
         draw_circle(58+treeDistance,130,18);     //1ra copa central del arbol
         draw_circle(72+treeDistance,130,18);     //2da copa central del arbol
         draw_circle(65+treeDistance,150,14);     //copa superior del arbol
@@ -45,9 +47,10 @@ void DrawGrassField(){
         glVertex2i(70+treeDistance,100);
         glVertex2i(65+treeDistance,220);
         glEnd();
-        glColor3f(0, 153, 0);   //Hojas del arbol
+        glColor3f(0.38, 0.75, 0.13);   //Hojas del arbol
         draw_circle(50+treeDistance,170,20);     //primera copa del arbol
         draw_circle(80+treeDistance,170,20);     //segunda copa del arbol
+        glColor3f(0.49, 0.86, 0.24); //Color claro de la copa
         draw_circle(58+treeDistance,200,18);     //1ra copa central del arbol
         draw_circle(72+treeDistance,200,18);     //2da copa central del arbol
         draw_circle(65+treeDistance,220,14);     //copa superior del arbol
@@ -57,7 +60,7 @@ void DrawGrassField(){
 void DrawCloud(){
     ///==================================== Creacion de nubes
     glColor3f(255, 255, 255);
-                        //left cloud
+                        //nube izquierda
     draw_circle(100+move_cloud,730,33);
     draw_circle(55+move_cloud,730,23);
     draw_circle(145+move_cloud,730,23);
@@ -65,7 +68,7 @@ void DrawCloud(){
     draw_circle(200+move_cloud,630,43);
     draw_circle(150+move_cloud,630,33);
     draw_circle(245+move_cloud,630,33);
-                        //right cloud
+                        //nube derecha
     draw_circle(700+move_cloud,630,33);
     draw_circle(655+move_cloud,630,23);
     draw_circle(745+move_cloud,630,23);
@@ -78,14 +81,16 @@ void DrawIndustry(){
      ///============================== edificio del lado derecho
 
     glBegin(GL_POLYGON);
-	glColor3ub(120, 100, 100);
+    glColor3ub(1, 1, 1);
     glVertex2i(570,100);
     glVertex2i(720,100);
+    glColor3ub(120, 100, 100);
     glVertex2i(720,390);
     glVertex2i(600,390);
     glVertex2i(600,430);
     glVertex2i(570,430);
     glEnd();
+
     glBegin(GL_POLYGON);
 	glColor3f(0.0,0.7,1.5);
     glVertex2i(570,730);
@@ -126,7 +131,62 @@ void DrawIndustry(){
             b4y02=b4y02+25;
         }
 }
+///============================== Edificio Central
+    glBegin(GL_POLYGON);
+	glColor3ub(20, 1, 1);
+    glVertex2i(290,140);
+    glVertex2i(400,140);
+    glColor3ub(102, 51, 40);
+    glVertex2i(400,500);
+    glVertex2i(290,500);
+    glEnd();
+
+    int b3y1=250,b3y2=260;
+    int b3x1=300,b3x2=315;
+    for(int j=1;j<37;j++){
+        glBegin(GL_POLYGON);
+//=============================== Primera filas de ventanas
+        glColor3ub(204, 204, 255);
+        glVertex2i(b3x1,b3y1);
+        glVertex2i(b3x2,b3y1);
+        glVertex2i(b3x2,b3y2);
+        glVertex2i(b3x1,b3y2);
+        glEnd();
+
+        b3x1=b3x1+25;
+        b3x2=b3x2+25;
+        if(j%4==0){
+            b3x1=300;
+            b3x2=315;
+            b3y1=b3y1+25;
+            b3y2=b3y2+25;
+        }
+    }
+//==================================antena
+    for(int i=0;i<5;i++){
+        glBegin(GL_POLYGON);
+        if(i%2==0){
+            glColor3ub(153, 204, 0);
+        }
+        else{
+            glColor3ub(153,0, 0);
+        }
+        glVertex2i(300+(i*10),505+(i*5));
+        glVertex2i(390-(i*10),505+(i*5));
+        glVertex2i(390-(i*10),500+(i*5));
+        glVertex2i(300+(i*10),500+(i*5));
+        glEnd();
+    }
+
+    glBegin(GL_POLYGON);
+	glColor3ub(202, 51, 0);
+    glVertex2i(343,525);
+    glVertex2i(347,525);
+    glVertex2i(347,600);
+    glVertex2i(343,600);
+    glEnd();
 }
+
 void DrawCity()
 {
     ///================================= Creacion del Sol
@@ -134,7 +194,7 @@ void DrawCity()
     draw_circle(380,705,60);   //(X, Y, radio)
     glColor3f(1.0,0.99,0.81);   //color
     draw_circle(380,705,50);
-    glColor3f(1.72,1.45,0.5);   //color
+    glColor3f(1,1,0);   //color
     draw_circle(380,705,40);
 
     DrawIndustry();
@@ -145,6 +205,7 @@ void DrawCity()
 	glColor3ub(25,71,128);
     glVertex2i(50,450);
     glVertex2i(150,450);
+    glColor3ub(0.30,0.29,0.78);
     glVertex2i(150,100);
     glVertex2i(50,100);
     glEnd();
@@ -177,7 +238,7 @@ void myDisplay(void)
 
 void Dibujar (void)
 {
-    glClearColor(0.0,0.7,1.5,0.0);  //sky color
+    glClearColor(0.0,0.7,1.5,0.0);  //color del cielo
     glColor3f(0.0f, 0.0f, 0.0f);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
