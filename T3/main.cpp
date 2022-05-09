@@ -4,13 +4,47 @@
 #include <GL/glut.h>
 #include <math.h>
 #include <iostream>
+#define PI=3.14159265358979323846;
 
-using namespace std;
 
+
+/* Variables de uso general */
+static int window;
 float xx =0.0;
 float yy=0.0;
 void KoopaTropa();
+static int valueShapes = 0;
+static int submenu_menu;
+using namespace std;
 
+void geometricMenu(int num){
+    valueShapes = num;
+    glutPostRedisplay();
+    }
+
+void exit(){
+    glutDestroyWindow(window); // Cierra la ventana.
+    exit(0);
+}
+
+void createMenu(void){
+    int e;
+    submenu_menu = glutCreateMenu(geometricMenu); //Opciones para el submenú "Figuras".
+    glutAddMenuEntry("Identificación del grupo", 1);
+    glutAddMenuEntry("Paisaje", 2);
+    glutAddMenuEntry("Mario Bro", 3);
+
+    glutCreateMenu(geometricMenu); // Se Crea el menú de opciones.
+    e = glutCreateMenu(exit); // Cierre de ventana.
+
+    // Opciones principales
+    glutAddSubMenu("Menu en OpenGlut", submenu_menu);
+    glutAddMenuEntry("Salida", e);
+    glutAttachMenu(GLUT_RIGHT_BUTTON); //Click derecho de despliegue
+}
+
+
+//Taller 3""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 void KoopaTropa(){
     glBegin(GL_QUADS);
     glColor3f(0.0,0.0,0.0);
@@ -255,30 +289,49 @@ void Color(){
     glFlush();
 
 }
+//fin taller 3""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-void Dibujar(void)
-{
-    glColor3f(0.0f, 0.0f, 0.0f);
-    glClearColor(1.0,1.0,1.0,1.0);
-    glClear (GL_COLOR_BUFFER_BIT);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluOrtho2D(0.0, 800.0, 0.0, 800.0);
-    Color();
-    KoopaTropa();
+//Taller 2######################################################3
 
-    glEnd();
+//fin taller 2############################################################
+
+void Display(void){
+    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+    glMatrixMode(GL_PROJECTION | GL_MODELVIEW);
+    switch (valueShapes)//Proyecta identificación del grupo, taller 2 o 3 y
+    {
+        case 1: //identificación de grupo
+
+        break;
+        case 2: //taller 2
+
+        break;
+        case 3: //taller 3
+            glColor3f(0.0f, 0.0f, 0.0f);
+            glClearColor(1.0,1.0,1.0,1.0);
+            glClear (GL_COLOR_BUFFER_BIT);
+            glMatrixMode(GL_PROJECTION);
+            glLoadIdentity();
+            gluOrtho2D(0.0, 800.0, 0.0, 800.0);
+            Color();
+            KoopaTropa();
+            glEnd();
+        break;
+    }
     glFlush ();
 }
+
 
 int main(int argc, char* argv[])
 {
     glutInit(&argc, argv);
     glutInitDisplayMode (GLUT_SINGLE | GLUT_RGBA);
     glutInitWindowSize (800, 600);
-    glutInitWindowPosition (200,50);
-    glutCreateWindow ("Taller3 - Koopa Tropa" );
-    glutDisplayFunc(Dibujar);
+    glutInitWindowPosition (100,100);
+    window = glutCreateWindow ("Taller3 - Koopa Tropa" );
+    glEnable(GL_DEPTH_TEST);
+    glutDisplayFunc(Display);
+    createMenu();
     glutMainLoop();
+    return EXIT_SUCCESS;
 }
-
