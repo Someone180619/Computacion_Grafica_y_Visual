@@ -3,17 +3,18 @@
 #include<string.h>
 #include <GL/glut.h>
 #include <math.h>
+#include <iostream>
 
-void proyeccion(){
-    glClearColor(1.0,1.0,1.0,0.0);
-    glMatrixMode(GL_PROJECTION);
-    gluOrtho2D(-16,16,-9,9);
-}
+using namespace std;
+
+float xx =0.0;
+float yy=0.0;
+void KoopaTropa();
 
 void KoopaTropa(){
     glBegin(GL_QUADS);
+    glColor3f(0.0,0.0,0.0);
 ///lineas horizontales
-	glColor3f(0.0,0.0,0.0);
     glVertex2i(600,750);glVertex2i(650,750);
     glVertex2i(650,725);glVertex2i(600,725);
     //espacio
@@ -36,7 +37,6 @@ void KoopaTropa(){
     glVertex2i(475,100);glVertex2i(325,100);
 
 ///linea 1
-    glColor3f(0.0,0.0,0.0);
     glVertex2i(325,425);glVertex2i(350,425);
     glVertex2i(350,275);glVertex2i(325,275);
     //espacio
@@ -47,7 +47,6 @@ void KoopaTropa(){
     glVertex2i(350,125);glVertex2i(325,125);
 
 ///linea 2
-    glColor3f(0.0,0.0,0.0);
     glVertex2i(350,475);glVertex2i(375,475);
     glVertex2i(375,425);glVertex2i(350,425);
     //espacio
@@ -59,7 +58,6 @@ void KoopaTropa(){
 
 
 ///linea 3
-    glColor3f(0.0,0.0,0.0);
     glVertex2i(375,500);glVertex2i(400,500);
     glVertex2i(400,475);glVertex2i(375,475);
     //espacio
@@ -70,7 +68,6 @@ void KoopaTropa(){
     glVertex2i(400,325);glVertex2i(375,325);
 
 ///linea 4
-    glColor3f(0.0,0.0,0.0);
     glVertex2i(400,475);glVertex2i(425,475);
     glVertex2i(425,450);glVertex2i(400,450);
     //espacio
@@ -84,7 +81,6 @@ void KoopaTropa(){
     glVertex2i(425,250);glVertex2i(400,250);
 
 ///linea 5
-    glColor3f(0.0,0.0,0.0);
     glVertex2i(450,450);glVertex2i(425,450);
     glVertex2i(425,425);glVertex2i(450,425);
     //espacio
@@ -92,7 +88,6 @@ void KoopaTropa(){
     glVertex2i(425,275);glVertex2i(450,275);
 
 ///linea 6
-    glColor3f(0.0,0.0,0.0);
     glVertex2i(475,475);glVertex2i(450,475);
     glVertex2i(450,450);glVertex2i(475,450);
     //espacio
@@ -110,7 +105,6 @@ void KoopaTropa(){
 
 
 ///linea 8
-    glColor3f(0.0,0.0,0.0);
     glVertex2i(475,500);glVertex2i(500,500);
     glVertex2i(500,475);glVertex2i(475,475);
     //espacio
@@ -122,7 +116,6 @@ void KoopaTropa(){
 
 
 ///linea 9
-    glColor3f(0.0,0.0,0.0);
     glVertex2i(500,625);glVertex2i(525,625);
     glVertex2i(525,525);glVertex2i(500,525);
     //espacio
@@ -139,7 +132,6 @@ void KoopaTropa(){
     glVertex2i(525,125);glVertex2i(500,125);
 
 ///linea 10
-    glColor3f(0.0,0.0,0.0);
     glVertex2i(525,650);glVertex2i(550,650);
     glVertex2i(550,625);glVertex2i(525,625);
     //espacio
@@ -153,7 +145,6 @@ void KoopaTropa(){
     glVertex2i(550,175);glVertex2i(525,175);
 
 ///linea 11
-    glColor3f(0.0,0.0,0.0);
     glVertex2i(550,675);glVertex2i(575,675);
     glVertex2i(575,650);glVertex2i(550,650);
     //espacio
@@ -164,7 +155,6 @@ void KoopaTropa(){
     glVertex2i(575,175);glVertex2i(550,175);
 
 ///linea 12
-    glColor3f(0.0,0.0,0.0);
     glVertex2i(575,725);glVertex2i(600,725);
     glVertex2i(600,600);glVertex2i(575,600);
     //espacio
@@ -172,7 +162,6 @@ void KoopaTropa(){
     glVertex2i(600,200);glVertex2i(575,200);
 
 ///linea 13
-    glColor3f(0.0,0.0,0.0);
     glVertex2i(600,475);glVertex2i(625,475);
     glVertex2i(625,425);glVertex2i(600,425);
     //espacio
@@ -183,7 +172,6 @@ void KoopaTropa(){
     glVertex2i(625,175);glVertex2i(600,175);
 
 ///linea 14
-    glColor3f(0.0,0.0,0.0);
     glVertex2i(625,425);glVertex2i(650,425);
     glVertex2i(650,400);glVertex2i(625,400);
     //espacio
@@ -194,7 +182,6 @@ void KoopaTropa(){
     glVertex2i(650,150);glVertex2i(625,150);
 
 ///linea 15
-    glColor3f(0.0,0.0,0.0);
     glVertex2i(650,725);glVertex2i(675,725);
     glVertex2i(675,675);glVertex2i(650,675);
     //espacio
@@ -217,7 +204,6 @@ void KoopaTropa(){
     glVertex2i(675,100);glVertex2i(650,100);
 
 ///linea 16
-    glColor3f(0.0,0.0,0.0);
     glVertex2i(675,675);glVertex2i(700,675);
     glVertex2i(700,550);glVertex2i(675,550);
     //espacio
@@ -228,7 +214,6 @@ void KoopaTropa(){
     glVertex2i(700,350);glVertex2i(675,350);
 
 ///linea 17
-    glColor3f(0.0,0.0,0.0);
     glVertex2i(700,550);glVertex2i(725,550);
     glVertex2i(725,425);glVertex2i(700,425);
 
@@ -236,33 +221,64 @@ void KoopaTropa(){
     glFlush();
 }
 
+void Color(){
+    glBegin(GL_QUADS);
+///caparazon verde
+    glColor3f(0.0,0.5,0.0);
+    glVertex2i(350,500);glVertex2i(525,500);
+    glVertex2i(525,225);glVertex2i(350,225);
+    glColor3f(1.0,1.0,1.0);
+    glVertex2i(350,500);glVertex2i(375,500);
+    glVertex2i(375,475);glVertex2i(350,475);
+///Relleno Amarillo
+    glColor3f(1.0,0.5,0.0);
+    //patas
+    glVertex2i(500,175);glVertex2i(625,175);
+    glVertex2i(625,125);glVertex2i(500,125);
+    glVertex2i(375,150);glVertex2i(475,150);
+    glVertex2i(475,125);glVertex2i(375,125);
+    glVertex2i(575,200);glVertex2i(600,200);
+    glVertex2i(600,175);glVertex2i(575,175);
+    //cara
+    glVertex2i(525,650);glVertex2i(600,650);
+    glVertex2i(600,475);glVertex2i(525,475);
+    glVertex2i(575,550);glVertex2i(625,550);
+    glVertex2i(625,300);glVertex2i(575,300);
+    glVertex2i(625,525);glVertex2i(650,525);
+    glVertex2i(650,500);glVertex2i(625,500);
+    glVertex2i(650,550);glVertex2i(700,550);
+    glVertex2i(700,450);glVertex2i(650,450);
+    glVertex2i(625,400);glVertex2i(675,400);
+    glVertex2i(675,350);glVertex2i(625,350);
 
-void myDisplay(void)
-{
-    glClearColor(1.0,1.0,1.0,1.0);
-    glClear (GL_COLOR_BUFFER_BIT);
-    KoopaTropa();
     glEnd();
-    glFlush ();
+    glFlush();
+
 }
 
-void Dibujar (void)
+void Dibujar(void)
 {
     glColor3f(0.0f, 0.0f, 0.0f);
+    glClearColor(1.0,1.0,1.0,1.0);
+    glClear (GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluOrtho2D(0.0, 800.0, 0.0, 800.0);
+    Color();
+    KoopaTropa();
+
+    glEnd();
+    glFlush ();
 }
 
 int main(int argc, char* argv[])
 {
     glutInit(&argc, argv);
-    glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
+    glutInitDisplayMode (GLUT_SINGLE | GLUT_RGBA);
     glutInitWindowSize (800, 600);
     glutInitWindowPosition (200,50);
     glutCreateWindow ("Taller3 - Koopa Tropa" );
-    glutDisplayFunc(myDisplay);
-    Dibujar();
+    glutDisplayFunc(Dibujar);
     glutMainLoop();
 }
 

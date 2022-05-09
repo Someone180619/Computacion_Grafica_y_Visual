@@ -899,3 +899,11 @@
 1526093416 c:\program files\codeblocks\mingw\x86_64-w64-mingw32\include\math.h
 	<crtdefs.h>
 
+1652055557 source:c:\users\hp user\desktop\utp2022\computacion grafica y visual\computacion_grafica_y_visual\t3\main.cpp
+	<windows.h>
+	<stdio.h>
+	<string.h>
+	<GL/glut.h>
+	<math.h>
+	<iostream>
+
