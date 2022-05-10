@@ -1,2 +1,3 @@
 # Aquí inicia la carpeta de trabajo
 No se que añadir...
+Proximamente habrá un índice listando la actividad realizada por asignación.
