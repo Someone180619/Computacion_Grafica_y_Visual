@@ -96,21 +96,44 @@ void externalChambers(void)
     internalChambers();
 }
 
-
 static void display(void)
 {
     float wx = -0.25, wy = -0.1, cx = 0.0, cy = 0.0;
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //Chambers
     externalChambers();
+
+    //Wing
+    glBegin(GL_POLYGON);
+    //high
+    glColor3f(0.0, 0.8, 0.4);
+    glVertex2f(-0.2, 0.1);
+    glVertex2f(-0.36, 0.75);
+    glColor3f(0.0, 0.4, 0.1);
+    glVertex2f(-0.34, 0.8);
+    glVertex2f(0.15, 0.3);
+    glEnd();
+    glBegin(GL_POLYGON);
+    //low
+    glColor3f(0.0, 0.8, 0.4);
+    glVertex2f(-0.3, 0.1);
+    glVertex2f(0.7, -0.3);
+    glColor3f(0.0, 0.4, 0.1);
+    glVertex2f(0.76, -0.28);
+    glVertex2f(0.2, 0.2);
+    glEnd();
+    glBegin(GL_POLYGON);
+
     //Aircraft Body
     glBegin(GL_POLYGON);
-    glColor3f(0.0, 0.0, 0.4);
+    glColor3f(0.0, 0.2, 0.4);
     glVertex2f(-0.5, -0.43);
     glVertex2f(-0.6, -0.1);
+    glColor3f(0.1, 0.4, 0.4);
     glVertex2f(0.3, 0.6);
     glVertex2f(0.5, 0.4);
     glEnd();
+
     //Aircraft rudder
     glBegin(GL_POLYGON);
     glVertex2f(0.3, 0.6);
@@ -124,25 +147,11 @@ static void display(void)
     glVertex2f(0.65, 0.35);
     glVertex2f(0.5, 0.4);
     glEnd();
-    //Wing
-    glBegin(GL_POLYGON);
-    //high
-    glVertex2f(-0.2, 0.1);
-    glVertex2f(-0.36, 0.75);
-    glVertex2f(-0.34, 0.8);
-    glVertex2f(0.15, 0.3);
-    glEnd();
-    glBegin(GL_POLYGON);
-    //low
-    glVertex2f(-0.3, 0.1);
-    glVertex2f(0.7, -0.3);
-    glVertex2f(0.76, -0.28);
-    glVertex2f(0.2, 0.2);
-    glEnd();
+    
 
     //Main Cabin
     glPushMatrix();
-    glColor3f(0.0, 0.0, 0.4);
+    glColor3f(0.0, 0.2, 0.4);
     glTranslatef(-0.53, -0.205, 0.0);
     glutSolidSphere(0.125, 25, 20);
     glPopMatrix();
@@ -153,7 +162,7 @@ static void display(void)
 
     //Windows
     glColor3f(1.0, 0.0, 0.0);
-
+    glColor3f(0.4, 0.2, 0.4);
     glPushMatrix();
     glTranslatef(-0.6, -0.2, 0.0);
     glutSolidSphere(0.025, 25, 20);
@@ -195,6 +204,7 @@ static void display(void)
     glPopMatrix();
     glFlush();
 }
+
 void specialkey(int key, int x, int y)
 {
     if(key==GLUT_KEY_UP|GLUT_KEY_DOWN|GLUT_KEY_RIGHT|GLUT_KEY_LEFT)
