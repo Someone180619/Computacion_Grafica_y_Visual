@@ -9,8 +9,25 @@ float a, b;
 void iniciarProyeccion ()
 {
     glClearColor(1.0,1.0,1.0,0.0);
-    glMatrixMode(GL_MODELVIEW);
+    glMatrixMode(GL_MODELVIEW | GL_PROJECTION);
+    glLoadIdentity();
 }
+
+/*void GradientBackground(){
+
+    glBegin(GL_QUADS);
+    //celeste
+    glColor3f(0.5f, 1.0f, 1.0f);
+    glVertex2f(-1.0, 1.0);
+    glVertex2f(-1.0,-1.0);
+    //amarillo
+    glColor3f(1.0f, 1.0f, 0.0f);
+    glVertex2f(1.0,-1.0);
+    glVertex2f(1.0, 1.0);
+    glEnd();
+
+
+}*/
 
 void propellers(void){
     float calx, caly, r = 0.07, px_hp = -0.318, py_hp = 0.25, px_lp = 0.128, py_lp = -0.139;
@@ -56,7 +73,7 @@ void propellers(void){
     glVertex2f(0.143, -0.139);
     glVertex2f(0.128, -0.124);
     glEnd();
-}   
+}
 
 void internalChambers(void)
 {
@@ -66,13 +83,13 @@ void internalChambers(void)
     glBegin(GL_TRIANGLE_FAN);
     glVertex2f(x = -0.318, y = 0.25); // Center
     for(i = 0.0f; i <= 360; i++)
-        glVertex2f(r*cos(M_PI * i / 180.0) + x, r*sin(M_PI * i / 180.0) + y);
+        glVertex2f(r*cos(3.1416 * i / 180.0) + x, r*sin(3.1416 * i / 180.0) + y);
     glEnd();
     //Lower Chamber
     glBegin(GL_TRIANGLE_FAN);
     glVertex2f(x = 0.128, y = -0.139); // Center
     for(i = 0.0f; i <= 360; i++)
-        glVertex2f(r*cos(M_PI * i / 180.0) + x, r*sin(M_PI * i / 180.0) + y);
+        glVertex2f(r*cos(3.1416 * i / 180.0) + x, r*sin(3.1416 * i / 180.0) + y);
     glEnd();
     propellers();
 }
@@ -80,6 +97,17 @@ void internalChambers(void)
 void externalChambers(void)
 {
     glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    glBegin(GL_QUADS);
+    //celeste
+    glColor3f(0.650, 0.878, 0.890);
+    glVertex2f(-1.0, 1.0);
+    glVertex2f(-1.0,-1.0);
+    //amarillo
+    glColor3f(0.815, 0.745, 0.525);
+    glVertex2f(1.0,-1.0);
+    glVertex2f(1.0, 1.0);
+    glEnd();
 
     glColor3f(0.4, 0.4, 0.4);
     //High chamber
@@ -94,6 +122,8 @@ void externalChambers(void)
     glPopMatrix();
 
     internalChambers();
+
+
 }
 
 static void display(void)
@@ -101,6 +131,7 @@ static void display(void)
     float wx = -0.25, wy = -0.1, cx = 0.0, cy = 0.0;
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //Chambers
+    //GradientBackground();
     externalChambers();
 
     //Wing
@@ -147,7 +178,7 @@ static void display(void)
     glVertex2f(0.65, 0.35);
     glVertex2f(0.5, 0.4);
     glEnd();
-    
+
 
     //Main Cabin
     glPushMatrix();
@@ -230,6 +261,3 @@ int main (int argc, char* argv [])
     glutMainLoop();
     return EXIT_SUCCESS;
 }
-
-
-
