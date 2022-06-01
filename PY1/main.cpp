@@ -10,8 +10,9 @@ void draw_circle(float x, float y, float radio);
 float move_cloud=0;
 float move_dust=0;
 
-void Pista(){
- glBegin(GL_QUADS);  //cesped
+void Fondo(){
+    ///=====================  cesped
+    glBegin(GL_QUADS);
     glColor3ub(51, 128, 0);
     glVertex2i(0, 0);
     glVertex2i(1000, 0);
@@ -20,7 +21,8 @@ void Pista(){
     glVertex2i(0, 300);
     glEnd();
 
-    glBegin(GL_QUADS);  //pista
+    ///=====================  Pista
+    glBegin(GL_QUADS);
     glColor3ub(50, 50, 50);
     glVertex2i(0, 50);
     glVertex2i(1000, 50);
@@ -28,97 +30,127 @@ void Pista(){
     glVertex2i(1000, 270);
     glVertex2i(0, 270);
     glEnd();
+    //====================== Lineas amarillas
+    int linea=0;
+    for(int i=0;i<5;i++){
+        glBegin(GL_QUADS);
+        glColor3ub(255,254, 17);
+        glVertex2i(10+linea, 180);
+        glVertex2i(100+linea, 180);
+        glVertex2i(100+linea, 200);
+        glVertex2i(10+linea, 200);
+        glEnd();
+        linea=linea+210;
+    }
 
-    glBegin(GL_QUADS);  //Lineas amarillas
-    glColor3ub(255, 254, 17);
-    glVertex2i(10, 180);
-    glVertex2i(100, 180);
-    glVertex2i(100, 200);
-    glVertex2i(10, 200);
-    //
-    glColor3ub(255, 254, 17);
-    glVertex2i(150, 180);
-    glVertex2i(240, 180);
-    glVertex2i(240, 200);
-    glVertex2i(150, 200);
-    //
-    glColor3ub(255, 254, 17);
-    glVertex2i(380, 180);
-    glVertex2i(290, 180);
-    glVertex2i(290, 200);
-    glVertex2i(380, 200);
-    //
-    glColor3ub(255, 254, 17);
-    glVertex2i(390, 180);
-    glVertex2i(340, 180);
-    glVertex2i(340, 200);
-    glVertex2i(390, 200);
-    //
-    glColor3ub(255, 254, 17);
-    glVertex2i(530, 180);
-    glVertex2i(440, 180);
-    glVertex2i(440, 200);
-    glVertex2i(530, 200);
-    //
-    glColor3ub(255, 254, 17);
-    glVertex2i(670, 180);
-    glVertex2i(580, 180);
-    glVertex2i(580, 200);
-    glVertex2i(670, 200);
-    //
-    glColor3ub(255, 254, 17);
-    glVertex2i(810, 180);
-    glVertex2i(720, 180);
-    glVertex2i(720, 200);
-    glVertex2i(810, 200);
-    //
-    glColor3ub(255, 254, 17);
-    glVertex2i(950, 180);
-    glVertex2i(860, 180);
-    glVertex2i(860, 200);
-    glVertex2i(950, 200);
+    ///==================================== estrellas
+    int Distance=0;
+    //------------------------------------ 1ra linea de estrellas
+    for(int i=0;i<5;i++){
+        glColor3f(255, 251, 0); //Amarillo
+        draw_circle(50+Distance,840,10);
+        glColor3f(0.0,0.1,0.23); //Azul
+        draw_circle(59+Distance,850,10);
+        draw_circle(59+Distance,830,10);
+        draw_circle(40+Distance,830,10);
+        draw_circle(40+Distance,850,10);
+        Distance=Distance+215;
+    }
+
+     Distance=0;
+    //------------------------------------ 2da linea de estrellas
+    for(int i=0;i<5;i++){
+        glColor3f(255, 251, 0); //Amarillo
+        draw_circle(120+Distance,690,10);
+        glColor3f(0.0,0.1,0.23); //Azul
+        draw_circle(129+Distance,700,10);
+        draw_circle(129+Distance,680,10);
+        draw_circle(110+Distance,680,10);
+        draw_circle(110+Distance,700,10);
+        Distance=Distance+215;
+    }
+
+    Distance=0;
+    //------------------------------------ 3ra linea de estrellas
+    for(int i=0;i<5;i++){
+        glColor3f(255, 251, 0); //Amarillo
+        draw_circle(120+Distance,990,10);
+        glColor3f(0.0,0.1,0.23); //Azul
+        draw_circle(129+Distance,1000,10);
+        draw_circle(129+Distance,980,10);
+        draw_circle(110+Distance,980,10);
+        draw_circle(110+Distance,1000,10);
+        Distance=Distance+215;
+    }
+
+    ///================================ Aeropuerto
+    glBegin(GL_POLYGON);
+	glColor3ub(204, 20, 255);
+    glVertex2i(250,700);
+    glVertex2i(750,700);
+    glColor3ub(102, 51, 40);
+    glVertex2i(750,295);
+    glVertex2i(250,295);
     glEnd();
+    int buildingY1=620,buildingY2=623;
+	for(int i=0;i<10;i++){
+        //================= Division de los pisos
+        glBegin(GL_POLYGON);
+        glColor3ub(153, 153, 102);
+        glVertex2i(250,buildingY1);
+        glVertex2i(750,buildingY1);
+        glVertex2i(750,buildingY2);
+        glVertex2i(250,buildingY2);
+        glEnd();
+        buildingY1=buildingY1-25;
+        buildingY2=buildingY2-25;
+	}
+	//==================================antena
+	glBegin(GL_POLYGON);
+	glColor3ub(102, 51, 40);
+    glVertex2i(495,800);
+    glVertex2i(505,800);
+    glVertex2i(505,700);
+    glVertex2i(495,700);
+    glEnd();
+    glColor3ub(102, 51, 40);
+    draw_circle(500,770,15);
+
+    for(int i=0;i<15;i++){
+        glBegin(GL_POLYGON);
+        if(i%2==0){
+            glColor3ub(10, 151, 40);
+        }
+        else{
+            glColor3ub(120, 51, 140);
+        }
+        glVertex2i(275+(i*10),705+(i*5));
+        glVertex2i(725-(i*10),705+(i*5));
+        glVertex2i(725-(i*10),700+(i*5));
+        glVertex2i(275+(i*10),700+(i*5));
+        glEnd();
+    }
+
 }
 
-void DrawCloud(){
-    ///==================================== Creacion de estrellas
-    //Estrella modelo
-    glColor3f(255, 251, 0); //Amarillo
-    draw_circle(140+move_cloud,750,10);
-    glColor3f(0.0,0.1,0.23); //Azul
-    draw_circle(149+move_cloud,759,10);
-    draw_circle(149+move_cloud,740,10);
-    draw_circle(130+move_cloud,740,10);
-    draw_circle(130+move_cloud,759,10);
 
-
-}
-void edificio(){
-
-}
-
-void DrawCity()
+void Moon()
 {
     ///================================= Creacion de la luna
 
     glColor3f(1.0,0.99,0.81);   //color
-    draw_circle(500, 800,70);
+    draw_circle(500, 900,70);
     glColor3f(0.0,0.1,0.23);   //azul color
-    draw_circle(560, 800,70);
+    draw_circle(560, 900,70);
 
-
-    edificio();
-    DrawCloud();
-    Pista();
 }
 
 void myDisplay(void)
 {
     glClearColor(0.0,0.1,0.23,0.0);
     glClear (GL_COLOR_BUFFER_BIT);
-    DrawCity();
-    DrawCloud();
-    Pista();
+    Fondo();
+    Moon();
     glEnd();
     glFlush ();
 }
@@ -131,7 +163,6 @@ void Dibujar (void)
     glLoadIdentity();
     gluOrtho2D(0.0, 1000.0, 0.0, 1000.0);
 }
-
 
 void draw_circle(float x, float y, float radio) {
     glMatrixMode(GL_MODELVIEW);
@@ -157,9 +188,9 @@ int main(int argc, char* argv[])
 {
     glutInit(&argc, argv);
     glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowSize (1366, 768);
-    glutInitWindowPosition (10,50);
-    glutCreateWindow ("Taller2 - Paisaje Libre" );
+    glutInitWindowSize (1000, 760);
+    glutInitWindowPosition (100,0);
+    glutCreateWindow ("Proyecto 1 - 1SF141" );
     glutDisplayFunc(myDisplay);
     Dibujar();
     glutMainLoop();
