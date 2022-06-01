@@ -149,6 +149,98 @@ void Moon()
     glColor3f(0.0, 0.1, 0.23); // azul color
     draw_circle(560, 900, 70);
 }
+float a;
+void paletas(void){
+    glPushMatrix();
+    glTranslatef(660, 515, 0);
+    glRotatef(a,0,0,1);
+    glTranslatef(-660, -515, 0);
+    glBegin(GL_POLYGON);
+    glColor3ub(51, 54, 55);
+    glVertex2i(660, 500);glVertex2i(670, 500);
+    glVertex2i(670, 625);glVertex2i(665, 630);
+    glVertex2i(660, 625);glVertex2i(660, 550);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glVertex2i(660, 500);glVertex2i(670, 500);
+    glVertex2i(670, 415);glVertex2i(665, 410);
+    glVertex2i(660, 415);glVertex2i(660, 550);
+    glEnd();
+    glPopMatrix();
+}
+
+void avionAlto(void){
+    //Ala tracera
+    glBegin(GL_POLYGON);
+    glColor3ub(97, 64, 24);
+    glVertex2i(430, 560);glVertex2i(455, 560);
+    glVertex2i(460, 620);glVertex2i(455, 625);
+    glVertex2i(440, 620);glVertex2i(430, 560);
+    glEnd();
+    //Ala tracera f
+    glBegin(GL_POLYGON);
+    glVertex2i(530, 500);glVertex2i(600, 500);
+    glVertex2i(560, 600);glVertex2i(540, 620);
+    glVertex2i(500, 620);glVertex2i(530, 500);
+    glEnd();
+    //Cuerpo
+    glBegin(GL_POLYGON);
+    glColor3ub(100, 104, 28);
+    glVertex2i(445, 480);glVertex2i(630, 480);
+    glVertex2i(630, 560);glVertex2i(460, 560);
+    glVertex2i(455, 590);glVertex2i(440, 600);
+    glVertex2i(430, 590);glVertex2i(425, 580);
+    glVertex2i(425, 510);glVertex2i(430, 500);
+    glVertex2i(435, 490);glVertex2i(445, 480);
+    glEnd();
+    //Ala frontal
+    glBegin(GL_POLYGON);
+    glColor3ub(97, 64, 24);
+    glVertex2i(430, 560);glVertex2i(455, 560);
+    glVertex2i(445, 500);glVertex2i(440, 495);
+    glVertex2i(435, 500);glVertex2i(430, 560);
+    glEnd();
+    //Ala frontal f
+    glBegin(GL_POLYGON);
+    glVertex2i(530, 500);glVertex2i(600, 500);
+    glVertex2i(560, 400);glVertex2i(540, 380);
+    glVertex2i(500, 380);glVertex2i(530, 500);
+    glEnd();
+    
+    //ventana
+    glBegin(GL_POLYGON);
+    glColor3ub(20, 169, 219);
+    glVertex2i(500, 560);glVertex2i(630, 560);
+    glVertex2i(615, 585);glVertex2i(520, 585);
+    glEnd();
+     //paletas
+    paletas();
+
+    //Helice Rtador
+    glBegin(GL_POLYGON);
+    glColor3ub(97, 28, 24);
+    glVertex2i(630, 480);glVertex2i(650, 480);
+    glVertex2i(660, 490);glVertex2i(670, 490);
+    glVertex2i(680, 520);glVertex2i(630, 480);
+
+    glVertex2i(680, 520);glVertex2i(670, 550);
+    glVertex2i(660, 550);glVertex2i(650, 560);
+    glVertex2i(630, 560);glVertex2i(630, 480);
+    glEnd();
+
+    glBegin(GL_QUADS);  
+    glColor3ub(45, 76, 35);
+    glVertex2i(480, 540);glVertex2i(520, 540);
+    glVertex2i(520, 510);glVertex2i(480, 510);
+    glEnd();
+}
+
+void specialkey(int key, int x, int y)
+{
+    if(key==GLUT_KEY_UP|GLUT_KEY_DOWN|GLUT_KEY_RIGHT|GLUT_KEY_LEFT)
+        a+=100;
+        glutPostRedisplay();
+}
 
 // Avión con movimiento
 void avionMovil()
@@ -221,6 +313,9 @@ void myDisplay(void)
     Fondo();
     Moon();
     avionMovil();
+
+    avionAlto();
+
     glEnd();
     glFlush();
 }
@@ -263,6 +358,7 @@ int main(int argc, char *argv[])
     glutInitWindowPosition(100, 0);
     glutCreateWindow("Proyecto 1 - 1SF141");
     glutDisplayFunc(myDisplay);
+    glutSpecialFunc(specialkey);
     Dibujar();
     glutMainLoop();
 }
