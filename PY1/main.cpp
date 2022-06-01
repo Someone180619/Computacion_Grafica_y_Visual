@@ -181,14 +181,6 @@ void avionMovil()
     glVertex2i(230, 300);
     glEnd();
 
-    /*glBegin(GL_QUADS);
-    glColor3f(0.0, 1.0, 1.0);
-    glVertex2i(230, 300);
-    glVertex2i(400, 300);
-    glVertex2i(400, 350);
-    glVertex2i(230, 350);
-    glEnd();*/
-
     //fin inferior a la cola
     glBegin(GL_QUADS);
     glColor3f(0.0, 1.0, 1.0);
@@ -207,11 +199,19 @@ void avionMovil()
     glVertex2i(220, 325);
     glEnd();
  
-    // Cabina
-    glPushMatrix();
-    glTranslatef(25, 20, 40);
-    glutSolidSphere(20, 20, 20);
-    glPopMatrix();
+    //Cabina
+    glColor3f(1.0, 1.0, 0.0);
+    draw_circle(396, 335, 15);
+    glColor3f(1.0, 0.0, 1.0);
+    draw_circle(400, 320, 20);
+
+    //Ventanas
+    int x = 265, y = 330;
+    glColor3f(0.0, 1.0, 0.0);
+    for (int i = 0; i<5 ; i++){
+        draw_circle(x, y, 7);
+        x+=25;
+    }
 }
 
 void myDisplay(void)
