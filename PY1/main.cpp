@@ -164,7 +164,6 @@ void Dibujar (void)
     gluOrtho2D(0.0, 1000.0, 0.0, 1000.0);
 }
 
-
 void draw_circle(float x, float y, float radio) {
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
